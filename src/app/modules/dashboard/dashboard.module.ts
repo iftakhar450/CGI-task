@@ -9,11 +9,8 @@ import { LineChartModule } from 'src/app/components/line-chart/line-chart.module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -22,9 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     TableModule,
     LineChartModule,
-    FlexLayoutModule,
-    
-
+    FlexLayoutModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {}

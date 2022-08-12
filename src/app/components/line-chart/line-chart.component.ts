@@ -1,21 +1,24 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import * as shape from 'd3-shape';
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineChartComponent implements OnInit {
-
   @Input() data: Observable<any[]> | undefined;
-  mySub: Subscription = new Subscription;
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  mySub: Subscription = new Subscription();
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   graphPoints: any[] = [];
   // view: any[] = [1000, 200];
@@ -40,14 +43,13 @@ export class LineChartComponent implements OnInit {
   };
 
   ngAfterViewInit() {
-    this.mySub = this.data!.subscribe(async event => {
+    this.mySub = this.data!.subscribe(async (event) => {
       if (event) {
-        console.log(event)
+        console.log(event);
         this.graphPoints = event;
         this.changeDetector.detectChanges();
       }
     });
-
   }
 
   ngOnDestroy() {

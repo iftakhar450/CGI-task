@@ -9,61 +9,65 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   tableColumns = ['machine_name', 'temperature', 'timestamp'];
   events: any = [];
-  filterEvents: any = []
+  filterEvents: any = [];
   chartDataSubject = new BehaviorSubject<any[]>([]);
   chartData: Observable<any[]> = this.chartDataSubject.asObservable();
   selected: string = 'm';
 
-  constructor(private route: ActivatedRoute,) {
+  constructor(private route: ActivatedRoute) {
     this.events = this.route.snapshot.data.events[0];
   }
 
   ngOnInit(): void {
-    this.arrangeEventData(this.events, this.selected)
-    this.filterEvents = this.events.filter(e => e.temperature >= 90)
+    this.arrangeEventData(this.events, this.selected);
+    this.filterEvents = this.events.filter((e) => e.temperature >= 90);
   }
-
 
   /**
    * Dropdown menu change
    */
   optionChange() {
-    this.arrangeEventData(this.events, this.selected)
-    console.log(this.selected)
+    this.arrangeEventData(this.events, this.selected);
+    console.log(this.selected);
   }
   arrangeEventData(data: any, type: string) {
     let groupedData = groupBy(data, 'machine_name');
-    let res = Object.keys(groupedData).map(ele => {
+    let res = Object.keys(groupedData).map((ele) => {
       let obj = {
         name: ele,
-        series: this.calculateAverage(this.reduceEventData(groupedData[ele], type))
+        series: this.calculateAverage(
+          this.reduceEventData(groupedData[ele], type)
+        )
       };
       return obj;
-    })
+    });
 
     this.chartDataSubject.next(res);
   }
 
   /**
    * Reduce the array on the basis of the type and return the
-   * @param data 
-   * @param type 
-   * @returns 
+   * @param data
+   * @param type
+   * @returns
    */
   reduceEventData(data, type) {
     return data.reduce((acc: any, date: any) => {
       let key: string = '';
       if (type == 'w') {
-        key = `${_moment(date.timestamp).year()}-${_moment(date.timestamp).week()}`
+        key = `${_moment(date.timestamp).year()}-${_moment(
+          date.timestamp
+        ).week()}`;
       }
       if (type == 'm') {
-        key = `${_moment(date.timestamp).year()}-${_moment(date.timestamp).format('MMM')}`
+        key = `${_moment(date.timestamp).year()}-${_moment(
+          date.timestamp
+        ).format('MMM')}`;
       }
       if (type == 'y') {
-        key = `${_moment(date.timestamp).year()}`
+        key = `${_moment(date.timestamp).year()}`;
       }
       // add this key as a property to the result object
       if (!acc[key]) {
@@ -72,13 +76,13 @@ export class DashboardComponent implements OnInit {
       // push the current date that belongs to the year-week calculated before
       acc[key].push(date.temperature);
       return acc;
-    }, {})
+    }, {});
   }
 
   /**
    * Calculate the average for each key array
-   * @param data 
-   * @returns 
+   * @param data
+   * @returns
    */
   calculateAverage(data: any[]) {
     return Object.keys(data).map((x: any) => {
@@ -88,6 +92,6 @@ export class DashboardComponent implements OnInit {
       };
       // obj[x] = ;
       return obj;
-    })
+    });
   }
 }

@@ -3,18 +3,9 @@ import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
 import { MaterialModule } from 'src/app/material/material.module';
 
-
-
 @NgModule({
-  declarations: [
-    TableComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule
-  ],
-  exports:[
-    TableComponent
-  ]
+  declarations: [TableComponent],
+  imports: [CommonModule, MaterialModule],
+  exports: [TableComponent]
 })
-export class TableModule { }
+export class TableModule {}

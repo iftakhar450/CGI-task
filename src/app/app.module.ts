@@ -20,7 +20,7 @@ import { LineChartModule } from './components/line-chart/line-chart.module';
     AppComponent,
     LayoutComponent,
     HeaderComponent,
-    SideNavComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -37,4 +37,4 @@ import { LineChartModule } from './components/line-chart/line-chart.module';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {}

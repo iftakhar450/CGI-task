@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Router,
+  Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
@@ -10,7 +11,10 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class TableResolver implements Resolve<boolean> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
     return of(true);
   }
 }
