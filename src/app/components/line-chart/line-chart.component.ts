@@ -16,11 +16,9 @@ import * as shape from 'd3-shape';
 export class LineChartComponent implements OnInit {
   @Input() data: Observable<any[]> = new Observable();
   mySub: Subscription = new Subscription();
-  constructor(private changeDetector: ChangeDetectorRef) {
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
-  }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   graphPoints: any[] = [];
   // view: any[] = [1000, 200];

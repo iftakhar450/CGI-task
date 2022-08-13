@@ -8,13 +8,10 @@ describe('DashboardComponent', () => {
   let fixture: ComponentFixture<DashboardComponent>;
   // let route: ActivatedRoute;
 
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardComponent],
-      imports: [
-        RouterModule.forRoot([]),
-      ]
+      imports: [RouterModule.forRoot([])]
     }).compileComponents();
   });
 

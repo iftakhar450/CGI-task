@@ -99,11 +99,10 @@ export class DashboardComponent implements OnInit {
 
 export interface IMachine {
   event_id: {
-    $oid: string
-  },
-  timestamp: string,
-  machine_id: string
-  machine_name: string,
-  temperature: number
-
+    $oid: string;
+  };
+  timestamp: string;
+  machine_id: string;
+  machine_name: string;
+  temperature: number;
 }
