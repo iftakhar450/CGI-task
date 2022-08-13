@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { groupBy, isArray, mean, round } from 'lodash';
+import { groupBy, sortBy, mean, round } from 'lodash';
 import * as _moment from 'moment';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
@@ -10,8 +10,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   tableColumns = ['machine_name', 'temperature', 'timestamp'];
-  events: any = [];
-  filterEvents: any = [];
+  events: IMachine[] = [];
+  filterEvents: IMachine[] = [];
   chartDataSubject = new BehaviorSubject<any[]>([]);
   chartData: Observable<any[]> = this.chartDataSubject.asObservable();
   selected: string = 'm';
@@ -26,15 +26,16 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
-   * Dropdown menu change
+   * Group Button  change
    */
   optionChange() {
     this.arrangeEventData(this.events, this.selected);
     console.log(this.selected);
   }
-  arrangeEventData(data: any, type: string) {
+  arrangeEventData(data: IMachine[], type: string) {
+    // console.log(sortBy(data, ['timestamp'], ['asc']))
     let groupedData = groupBy(data, 'machine_name');
-    let res = Object.keys(groupedData).map((ele) => {
+    let res = Object.keys(groupedData).map((ele: string) => {
       let obj = {
         name: ele,
         series: this.calculateAverage(
@@ -53,11 +54,12 @@ export class DashboardComponent implements OnInit {
    * @param type
    * @returns
    */
-  reduceEventData(data, type) {
-    return data.reduce((acc: any, date: any) => {
+  reduceEventData(data: IMachine[], type: string) {
+    return data.reduce((acc, date) => {
       let key: string = '';
       if (type == 'w') {
-        key = `${_moment(date.timestamp).year()}-${_moment(
+        // console.log(`${_moment(date.timestamp).startOf('week')} - ${_moment(date.timestamp).endOf('week')} `);
+        key = `${_moment(date.timestamp).year()}-week-${_moment(
           date.timestamp
         ).week()}`;
       }
@@ -84,14 +86,24 @@ export class DashboardComponent implements OnInit {
    * @param data
    * @returns
    */
-  calculateAverage(data: any[]) {
-    return Object.keys(data).map((x: any) => {
+  calculateAverage(data) {
+    return Object.keys(data).map((x: string) => {
       let obj = {
         name: x,
         value: round(mean(data[x]), 2)
       };
-      // obj[x] = ;
       return obj;
     });
   }
+}
+
+export interface IMachine {
+  event_id: {
+    $oid: string
+  },
+  timestamp: string,
+  machine_id: string
+  machine_name: string,
+  temperature: number
+
 }

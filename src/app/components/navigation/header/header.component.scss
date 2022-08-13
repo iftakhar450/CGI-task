@@ -1,6 +1,5 @@
 a {
   text-decoration: none;
-  color: white;
 }
 
 a:hover,
@@ -16,6 +15,11 @@ a:active {
 
 mat-toolbar {
   border-radius: 0px;
+}
+
+.logo {
+  height: 60px;
+  margin-top: 13px;
 }
 
 @media (max-width: 959px) {

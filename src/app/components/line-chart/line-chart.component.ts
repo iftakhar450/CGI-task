@@ -10,15 +10,17 @@ import * as shape from 'd3-shape';
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.sass'],
+  styleUrls: ['./line-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineChartComponent implements OnInit {
-  @Input() data: Observable<any[]> | undefined;
+  @Input() data: Observable<any[]> = new Observable();
   mySub: Subscription = new Subscription();
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  constructor(private changeDetector: ChangeDetectorRef) {
 
-  ngOnInit(): void {}
+  }
+
+  ngOnInit(): void { }
 
   graphPoints: any[] = [];
   // view: any[] = [1000, 200];
@@ -36,14 +38,14 @@ export class LineChartComponent implements OnInit {
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Average Temperature';
   timeline: boolean = false;
-  curve = shape.curveBundle.beta(1);
+  // curve = shape.curveBundle.beta(1);
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
   ngAfterViewInit() {
-    this.mySub = this.data!.subscribe(async (event) => {
+    this.mySub = this.data.subscribe(async (event) => {
       if (event) {
         console.log(event);
         this.graphPoints = event;
