@@ -7,11 +7,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,4 +17,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule
   ]
 })
-export class LoginModule { }
+export class LoginModule {}

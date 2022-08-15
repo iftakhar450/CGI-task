@@ -19,7 +19,11 @@ const routes: Routes = [
         (m) => m.DashboardModule
       )
   },
-  { path: 'login', loadChildren: () => import('./modules/auth/login/login.module').then(m => m.LoginModule) },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/auth/login/login.module').then((m) => m.LoginModule)
+  },
 
   { path: '**', redirectTo: '/login' }
 ];
@@ -27,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

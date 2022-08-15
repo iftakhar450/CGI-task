@@ -31,7 +31,7 @@ import { LineChartModule } from './components/line-chart/line-chart.module';
     HttpClientModule,
     FormsModule,
     TableModule,
-    LineChartModule,
+    LineChartModule
   ],
   providers: [],
   bootstrap: [AppComponent],
