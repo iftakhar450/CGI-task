@@ -1,5 +1,3 @@
-
-
 a {
   text-decoration: none;
   color: var(--app_color_primary);
@@ -7,9 +5,8 @@ a {
 
 a:hover,
 a:active {
-  background-color: var(--app_color_secondary);;
+  background-color: var(--app_color_secondary);
   color: var(--app_color_primary);
-  ;
 }
 
 .nav-caption {
