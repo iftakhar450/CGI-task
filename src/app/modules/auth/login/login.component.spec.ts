@@ -1,19 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-  FormControl,
-  FormGroup,
   ReactiveFormsModule,
-  Validators
 } from '@angular/forms';
-import {
-  MatError,
-  MatFormField,
-  MatFormFieldModule
-} from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/app/material/material.module';
