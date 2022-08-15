@@ -1,24 +1,18 @@
 <div class="mat-elevation-z0">
   <div class="example-header" class="w-100">
     <mat-form-field appearance="outline" class="w-50">
-      <input
-        matInput
-        (keyup)="filter($event.target.value)"
-        placeholder="Filter by fields"
-      />
+      <input matInput (keyup)="filter($event.target.value)" placeholder="Filter by fields" />
     </mat-form-field>
   </div>
   <mat-table [dataSource]="dataSource" matSort style="overflow-y: auto">
     <!-- Columns -->
-    <ng-container
-      *ngFor="let col of displayedColumns; let i = index"
-      matColumnDef="{{ col }}"
-    >
+    <ng-container *ngFor="let col of displayedColumns; let i = index" matColumnDef="{{ col }}">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ col | titlecase }}
       </mat-header-cell>
-      <mat-cell [ngClass]="isShowIcon ? 'highlight' : ''" *matCellDef="let row">
-        {{ row[col] }}
+      <mat-cell *matCellDef="let row">
+        <span [ngClass]="isShowIcon && col =='temperature' ? 'highlight': ''"> {{ row[col] }}</span>
+
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

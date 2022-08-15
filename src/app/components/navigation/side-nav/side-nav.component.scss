@@ -1,11 +1,15 @@
+
+
 a {
   text-decoration: none;
-  color: white;
+  color: var(--app_color_primary);
 }
 
 a:hover,
 a:active {
-  color: lightgray;
+  background-color: var(--app_color_secondary);;
+  color: var(--app_color_primary);
+  ;
 }
 
 .nav-caption {

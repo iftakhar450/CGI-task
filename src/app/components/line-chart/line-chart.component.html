@@ -1,6 +1,6 @@
 <div class="container" #containerRef>
   <ngx-charts-line-chart
-    [view]="[containerRef.offsetWidth, containerRef.offsetHeight]"
+    [view]="[containerRef.offsetWidth, 400]"
     [scheme]="colorScheme"
     [legend]="legend"
     [legendPosition]="legendPosition"
@@ -10,11 +10,11 @@
     [yAxis]="yAxis"
     [legendTitle]="'Machines'"
     [xAxisLabel]="xAxisLabel"
+    [curve]="curve"
     [gradient]="gradient"
     [yAxisLabel]="yAxisLabel"
     [timeline]="timeline"
     [results]="graphPoints"
   >
   </ngx-charts-line-chart>
-  <!--   [curve]="curve" -->
 </div>

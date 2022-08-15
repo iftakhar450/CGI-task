@@ -1,10 +1,17 @@
+
+
 a {
   text-decoration: none;
+  background-color: var(--app_color_secondary);
+  color: var(--app_color_primary);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 a:hover,
 a:active {
-  color: lightgray;
+  background-color: var(--app_color_primary);
+  color: var(--app_color_secondary);
 }
 
 .navigation-items {

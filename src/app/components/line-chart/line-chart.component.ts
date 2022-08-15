@@ -33,10 +33,10 @@ export class LineChartComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Average Temperature';
+  xAxisLabel: string = 'Time Frame';
+  yAxisLabel: string = 'Average Temperature Result';
   timeline: boolean = false;
-  // curve = shape.curveBundle.beta(1);
+  curve = shape.curveBundle.beta(1);
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
